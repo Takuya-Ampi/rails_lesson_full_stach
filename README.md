@@ -12,7 +12,7 @@
 
 ### 5 config/database.ymlを編集するためエディタでrailsディレクトリを開く
 
-### 6 以下のコードを確認する(多分12行目くらい。readmeだと横並びになってるが、
+### 6 以下のコードを確認する(多分12行目くらい。)
 
 ```default: &default```  
 ``` adapter: mysql2```  
