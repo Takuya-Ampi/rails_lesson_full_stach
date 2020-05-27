@@ -12,7 +12,7 @@
 
 5 config/database.ymlを編集するためエディタでrailsディレクトリを開く
 
-6 以下のコードを確認する(多分12行目くらい。)
+6 以下のコードを確認する(多分12行目くらい。username: rootの追記。host: localhostからhost: dbへと変更)
 
 ```default: &default```  
 ``` adapter: mysql2```  
