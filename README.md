@@ -1,43 +1,24 @@
-# dockerでのrails環境構築レポジトリ
+# README
 
-## 手順
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-1 ```git clone```
+Things you may want to cover:
 
-2 カレントディレクトリがdocker-compose.ymlファイル上になるように移動する
+* Ruby version
 
-3 ```docker-compose run web rails new . --force --database=mysql```
+* System dependencies
 
-4 ```docker-compose build```
+* Configuration
 
-5 config/database.ymlを編集するためエディタでrailsディレクトリを開く
+* Database creation
 
-6 以下のコードを確認する(多分12行目くらい。)
+* Database initialization
 
-```default: &default```  
-``` adapter: mysql2```  
-``` encoding: utf8```  
-``` pool: 5```  
-``` username: root```  
-``` pasword: ```  
-``` host: localhost```  
+* How to run the test suite
 
-7 次のように編集する(編集したら保存する)
+* Services (job queues, cache servers, search engines, etc.)
 
-```default: &default```  
-``` adapter: mysql2```  
-``` encoding: utf8```  
-``` pool: 5```  
-``` username: root```  
-``` pasword: password ```  
-``` host: db```  
+* Deployment instructions
 
-8 ```docker-compose up -d```
-
-9 ```docker-compose ps``` (起動を確認する。rails_db_1とrails_web_1のStateがUpになってたらOK)
-
-10 ```docker-compose run web bundle exec rake db:create```
-
-11 ```localhost:3000```　とchrome等のブラウザに打ち込みrailsの起動画面が表示されれば環境構築完了
-
-
+* ...
