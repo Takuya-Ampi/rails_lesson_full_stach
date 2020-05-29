@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
   def index
+    # データベースのBoardテーブルにある全てのデータを取得する
+    @boards = Board.all
   end
   def new
     @board = Board.new
