@@ -9,6 +9,10 @@ class BoardsController < ApplicationController
   def create
     Board.create(board_params)
   end
+  def show
+    @board = Board.find(params[:id])
+  end
+
 
   # ストロングパラメーター。意図していないparamsが渡ってくるのを防ぐ。フィルターをかけている
   private
