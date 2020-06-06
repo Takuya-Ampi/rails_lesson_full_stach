@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+  before_action :set_target_board, only: %i[show edit update destroy]
   def index
     # データベースのBoardテーブルにある全てのデータを取得する
     @boards = Board.all
@@ -12,22 +13,18 @@ class BoardsController < ApplicationController
     redirect_to board
   end
   def show
-    @board = Board.find(params[:id])
   end
   def edit
-    @board = Board.find(params[:id])
   end
   def update
     # インスタンス変数ではなく、ローカル変数に代入。今回のupdateアクションでは、viewに表示する必要がないから
-    board = Board.find(params[:id])
     # updateメソッドで行う引数にはハッシュ形式でプロパティイ名と値の組を渡す
     board.update(board_params)
     # 特定のモデルの詳細画面にリダイレクトする場合はリダイレクトというメソッドの引数にオブジェクトを指定するだけで転送してくれる。パスを指定しても良い
     redirect_to board
   end
   def destroy
-    board = Board.find(params[:id])
-    board.delete
+    @board.delete
     redirect_to boards_path
   end
 
@@ -37,5 +34,8 @@ class BoardsController < ApplicationController
   def board_params
     # paramsの中にある、boardキーのname,title,bodyの値のみ受け取る
     params.require(:board).permit(:name, :title, :body)
+  end
+  def set_target_board
+    @board = Board.find(params[:id])
   end
 end
