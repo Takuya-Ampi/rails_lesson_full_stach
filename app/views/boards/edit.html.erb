@@ -4,20 +4,6 @@
     <%= link_to '一覧', boards_path, class: 'btn btn-outline-dark'  %>
   </div>
 </div>
-<%# bordモデルのデータを新規に作成するフォームを作ることができる。methodはpostに自動でなる。 %>
-<%# Rails5.1以降はform_forやform_tag使わずにform_withらしい。今回はRails5.0.1なのでform_for%>
-<%= form_for @board do |f| %>
-  <div class="form-group">
-    <%= f.label :name, '名前' %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :title, 'タイトル' %>
-    <%= f.text_field :title, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body, '本文' %>
-    <%= f.text_area :body, class: 'form-control', rows: 10 %>
-  </div>
-  <%= f.submit '保存', class: 'btn btn-primary' %>
-<% end %>
+<%# パーシャルを呼び出す場合はレンダーメソッドを使い、その後ろにハッシュ形式で呼び出すパーシャル名を指定。 %>
+<%# locals以下の記載について。これがあることで、edit.html.erbをみた時に@boardというインスタンス変数が使われていることが確認でき、パーシャル側にはboardというローカル変数が渡ることになる %>
+<%= render partial: 'form', locals: { board: @board } %>
