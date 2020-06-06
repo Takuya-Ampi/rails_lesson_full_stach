@@ -12,6 +12,17 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
   end
+  def edit
+    @board = Board.find(params[:id])
+  end
+  def update
+    # インスタンス変数ではなく、ローカル変数に代入。今回のupdateアクションでは、viewに表示する必要がないから
+    board = Board.find(params[:id])
+    # updateメソッドで行う引数にはハッシュ形式でプロパティイ名と値の組を渡す
+    board.update(board_params)
+    # 特定のモデルンボ詳細画面にリダイレクトする場合はリダイレクトというメソッドの引数にオブジェクトを指定するだけで転送してくれる。パスを指定しても良い
+    redirect_to board
+  end
 
 
   # ストロングパラメーター。意図していないparamsが渡ってくるのを防ぐ。フィルターをかけている
