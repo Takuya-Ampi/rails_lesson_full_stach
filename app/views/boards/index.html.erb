@@ -24,6 +24,7 @@
       <td><%= board.updated_at.to_s(:datetime_jp) %></td>
       <%# link_toの第二引数にオブジェクトを指定することで、そのオブジェクトの詳細画面へ遷移できる %>
       <td><%= link_to '詳細', board, class: 'btn btn-outline-dark' %></td>
+      <td><%= link_to '削除', board, class: 'btn btn-outline-dark', method: :delete %></td>
     </tr>
   <% end %>
     <tr>
