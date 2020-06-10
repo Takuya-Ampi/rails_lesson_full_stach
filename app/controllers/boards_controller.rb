@@ -9,6 +9,7 @@ class BoardsController < ApplicationController
   end
   def create
     board = Board.create(board_params)
+    flash[:notice] = "「#{board.title}」の掲示板を作成しました"
     # 特定のモデルの詳細画面にリダイレクトする場合はリダイレクトというメソッドの引数にオブジェクトを指定するだけで転送してくれる。パスを指定しても良い
     redirect_to board
   end
@@ -19,13 +20,13 @@ class BoardsController < ApplicationController
   def update
     # インスタンス変数ではなく、ローカル変数に代入。今回のupdateアクションでは、viewに表示する必要がないから
     # updateメソッドで行う引数にはハッシュ形式でプロパティイ名と値の組を渡す
-    board.update(board_params)
+    @board.update(board_params)
     # 特定のモデルの詳細画面にリダイレクトする場合はリダイレクトというメソッドの引数にオブジェクトを指定するだけで転送してくれる。パスを指定しても良い
-    redirect_to board
+    redirect_to @board
   end
   def destroy
     @board.delete
-    redirect_to boards_path
+    redirect_to boards_path, flash: {notice: "「#{@board.title}」の掲示板を作成しました"}
   end
 
 
