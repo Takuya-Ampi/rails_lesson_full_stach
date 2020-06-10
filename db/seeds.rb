@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# railsの動作環境を判定する。railsには動作環境が3つある。test(テスト実行用環境),development(開発環境用),production(本番環境用)。デフォルトではdevelopmentになってる
+if Rails.env == "development"
+  (1..50).each do |i|
+    Board.create(name: "ユーザー#{i}", title: "タイトル#{i}", body: "本文#{i}")
+  end
+end

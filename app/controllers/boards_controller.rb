@@ -1,8 +1,8 @@
 class BoardsController < ApplicationController
   before_action :set_target_board, only: %i[show edit update destroy]
   def index
-    # データベースのBoardテーブルにある全てのデータを取得する
-    @boards = Board.all
+    # kaminariの使用。pageメソッドを呼ぶことにより、引数に指定したページに表示するデータだけを取得。デフォルトでは、1ページ辺り25件のデータを取得する
+    @boards = Board.page(params[:page])
   end
   def new
     @board = Board.new
